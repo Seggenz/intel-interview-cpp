@@ -1,0 +1,79 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 4
+    },
+    "configurePresets": [
+        {
+            "name": "output-dir",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "hidden": true
+        },
+        {
+            "name": "windows-visual-studio",
+            "generator": "Visual Studio 17 2022",
+            "inherits": [
+                "output-dir"
+            ],
+            "displayName": "Visual Studio Solution",
+            "architecture": {
+                "strategy": "set",
+                "value": "x64"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "linux-makefile",
+            "generator": "Unix Makefiles",
+            "inherits": [
+                "output-dir"
+            ],
+            "hidden": true,
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "linux-makefile-debug",
+            "displayName": "Linux Makefile Debug",
+            "inherits": [
+                "linux-makefile"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "linux-makefile-release",
+            "displayName": "Linux Makefile Release",
+            "inherits": [
+                "linux-makefile"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-visual-studio-debug",
+            "displayName": "Debug",
+            "configurePreset": "windows-visual-studio",
+            "configuration": "Debug"
+        },
+        {
+            "name": "windows-visual-studio-release",
+            "displayName": "Release",
+            "configurePreset": "windows-visual-studio",
+            "configuration": "Release"
+        }
+    ]
+}
