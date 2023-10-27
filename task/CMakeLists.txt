@@ -1,7 +1,8 @@
 set(APP_NAME "task")
 set(APP_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/source/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/source/serializer.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/source/serializer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/source/verifier.cpp)
 
 set(APP_INCLUDES
     ${CMAKE_CURRENT_SOURCE_DIR}/include)
