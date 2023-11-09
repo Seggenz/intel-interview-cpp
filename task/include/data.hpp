@@ -12,7 +12,7 @@ namespace Task
 
     struct Data
     {
-        uint32_t value = 0;
+        uint32_t value = 0; 
     };
 
     struct DataWrapper
